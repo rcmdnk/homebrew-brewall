@@ -1,4 +1,5 @@
 require 'formula'
+hogheo
 
 class Brewall < Formula
   homepage 'https://github.com/rcmdnk/homebrew-brewall/'
