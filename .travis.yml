@@ -88,7 +88,9 @@ script:
   - touch "$brewfile"
   - coverage run --parallel-mode $exe init -y
   - coverage run --parallel-mode $exe brew install firefox
+  - echo $brewfile
   - echo > $brewfile
+  - $exe cat
   - coverage run --parallel-mode $exe clean -C -V 2
   - coverage run --parallel-mode $exe init -y -V 2
   - coverage run --parallel-mode $exe brew install firefox
