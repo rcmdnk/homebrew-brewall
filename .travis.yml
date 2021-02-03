@@ -88,14 +88,10 @@ script:
   - touch "$brewfile"
   - coverage run --parallel-mode $exe init -y
   - coverage run --parallel-mode $exe brew install firefox
-  # Clean up tests
-  - coverage run --parallel-mode $exe clean
-  - coverage run --parallel-mode $exe brew list --formula
-  - $exe get_files
+  - echo > $brewfile
   - coverage run --parallel-mode $exe clean -C -V 2
   - coverage run --parallel-mode $exe init -y -V 2
   - coverage run --parallel-mode $exe brew install firefox
-  - coverage run --parallel-mode $exe clean -C
 notifications:
   email:
     recipients:
