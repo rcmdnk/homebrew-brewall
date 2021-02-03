@@ -77,17 +77,6 @@ install:
   - pip install --upgrade pip
   - '[ "$coveralls" = "coveralls-python" ] && pip install coveralls || :'
   - '[ "$coveralls" = "python-coveralls" ] && pip -e . --use-mirrors || :'
-  - which ruby
-  - brew install ruby
-  - hash -r
-  - which ruby
-  - 'brew rm postgis || :'
-  - 'brew rm gdal || :'
-  - 'brew rm numpy || :'
-  - 'brew rm maven || :'
-  - 'brew rm carthage || :'
-  - 'brew rm java || :'
-  - rm -rf /usr/local/Caskroom/java/
 before_script:
   - installed_brew=$(which brew-file)
   - brewprefix=$(brew --prefix)
@@ -95,7 +84,14 @@ before_script:
   - exe=$(pwd)/bin/brew-file
   - git config --global push.default simple # to suppress git warning
 script:
+  - mkdir -p $(dirname "$brewfile")
+  - touch "$brewfile"
+  - coverage run --parallel-mode $exe init -y
+  - coverage run --parallel-mode $exe brew install firefox
   # Clean up tests
+  - coverage run --parallel-mode $exe clean
+  - coverage run --parallel-mode $exe brew list --formula
+  - $exe get_files
   - coverage run --parallel-mode $exe clean -C -V 2
   - coverage run --parallel-mode $exe init -y -V 2
   - coverage run --parallel-mode $exe brew install firefox
