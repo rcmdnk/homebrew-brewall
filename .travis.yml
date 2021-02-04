@@ -85,6 +85,7 @@ before_script:
   - git config --global push.default simple # to suppress git warning
 script:
   #- brew uninstall --ignore-dependencies java
+  - touch $brewfile
   - brew file init -y
   - coverage run --parallel-mode $exe brew uninstall xquartz
   - coverage run --parallel-mode $exe clean -C -V 2
