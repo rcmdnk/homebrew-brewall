@@ -84,16 +84,9 @@ before_script:
   - exe=$(pwd)/bin/brew-file
   - git config --global push.default simple # to suppress git warning
 script:
-  - mkdir -p $(dirname "$brewfile")
-  - touch "$brewfile"
-  - coverage run --parallel-mode $exe init -y
-  - coverage run --parallel-mode $exe brew install firefox
-  - echo $brewfile
-  - echo > $brewfile
-  - $exe cat
-  - brew uninstall --ignore-dependencies java
+  #- brew uninstall --ignore-dependencies java
+  - coverage run --parallel-mode $exe uninstall xquartz
   - coverage run --parallel-mode $exe clean -C -V 2
-  - coverage run --parallel-mode $exe init -y -V 2
   - coverage run --parallel-mode $exe brew install firefox
 notifications:
   email:
