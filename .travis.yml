@@ -85,7 +85,8 @@ before_script:
   - git config --global push.default simple # to suppress git warning
 script:
   #- brew uninstall --ignore-dependencies java
-  - coverage run --parallel-mode $exe uninstall xquartz
+  - brew file init -y
+  - coverage run --parallel-mode $exe brew uninstall xquartz
   - coverage run --parallel-mode $exe clean -C -V 2
   - coverage run --parallel-mode $exe brew install firefox
 notifications:
