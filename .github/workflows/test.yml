@@ -1,5 +1,6 @@
 on:
   push:
+    tags-ignore:
       - '*'
     branches:
       - '**'
@@ -18,7 +19,7 @@ jobs:
     - name: brew update
       run: brew update
     - name: brew upgrade
-      run: brew upgrade
+      run: brew update
 
 
 
