@@ -19,7 +19,7 @@ jobs:
     - name: brew update
       run: brew update
     - name: brew upgrade
-      run: brew update
+      run: brew upgrade
 
 
 
