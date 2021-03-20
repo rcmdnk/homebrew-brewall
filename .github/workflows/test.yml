@@ -1,0 +1,25 @@
+on:
+  push:
+    tags-ignore:
+      - '*'
+    branches:
+      - '**'
+
+name: test
+
+jobs:
+  test:
+    name: test
+    runs-on: macos-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: brew check
+      run: brew list
+    - name: brew update
+      run: brew update
+    - name: brew upgrade
+      run: brew upgrade
+
+
+
