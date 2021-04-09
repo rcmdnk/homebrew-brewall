@@ -24,6 +24,12 @@ jobs:
         echo $PATH
         which python3
         which python
-
-
+    - name: npm install, make test-coverage
+      run: |
+        npm install
+        make test-coverage
+    - name: Coveralls
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
 
