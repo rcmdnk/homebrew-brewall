@@ -19,6 +19,11 @@ jobs:
         brew list
         brew update
         brew upgrade
+    - name: check
+      run: |
+        echo $PATH
+        which python3
+        which python
 
 
 
