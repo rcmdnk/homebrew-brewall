@@ -15,11 +15,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
     - name: brew check
-      run: brew list
-    - name: brew update
-      run: brew update
-    - name: brew upgrade
-      run: brew upgrade
+      run: |
+        brew list
+        brew update
+        brew upgrade
 
 
 
